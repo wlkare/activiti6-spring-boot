@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -30,12 +31,9 @@ public class UserController {
     @Autowired
     private ProcessEngine processEngine;
 
-
-
     @GetMapping("/login")
-    public String login(@RequestParam(value = "username",required = false) String userName
-            , @RequestParam(value = "password",required = false) String password, HttpSession session){
-        logger.debug("login request: {username={}, password={}}", userName, password);
+    public String login(@RequestParam(value = "username", required = false) String userName, @RequestParam(value = "password", required = false) String password, HttpSession session){
+        logger.info("login request: {username={}, password={}}", userName, password);
 
         //activiti Identify Service
         IdentityService identityService = processEngine.getIdentityService();
@@ -56,10 +54,32 @@ public class UserController {
             }
             session.setAttribute("groupNames", ArrayUtils.toString(groupNames));
 
-            return "redirect:/index";
+            return "redirect:first";
         }else {
-            return "redirect:/login.ftl?error=true";
+            logger.info("用户名或密码错误：{username={}, password={}}",userName,password);
+            return "login";
         }
+
+    }
+
+    //重定向，页面跳转
+    @RequestMapping("first")
+    public ModelAndView indexFirst(ModelAndView modelAndView) {
+        modelAndView.setViewName("index-first");
+        return modelAndView;
+    }
+
+    //退出登陆
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+
+        logger.info("退出系统");
+
+        //1,清空session中的用户信息
+        session.removeAttribute("loginUser");
+        //2,再将session进行注销
+        session.invalidate();
+        return "redirect:login";
 
     }
 
