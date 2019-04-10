@@ -40,11 +40,9 @@
                 <td><a target="_blank"
                        href="/read-resource?pdid=${pd.id }&resourceName=${pd.resourceName }">${pd.resourceName }</a>
                 </td>
-                <td><a target="_blank"
-                       href="/read-resource?pdid=${pd.id }&resourceName=${pd.diagramResourceName }">${pd.diagramResourceName }</a>
-                </td>
-                <td><a target="_blank"
-                       href="/delete-deployment?deploymentId=${pd.deploymentId}">删除</a>
+                <td><a target="_blank" href="/read-resource?pdid=${pd.id }&resourceName=${pd.diagramResourceName }">${pd.diagramResourceName }</a></td>
+                <td>
+                    <a target="_blank" href="/delete-deployment?deploymentId=${pd.deploymentId}">删除</a>
                 </td>
             </tr>
             </#list>
