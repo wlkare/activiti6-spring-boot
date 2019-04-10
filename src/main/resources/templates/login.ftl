@@ -21,8 +21,8 @@
                 <td>
                     <button type="submit" class="btn btn-primary">登录系统</button>
                 </td>
-            </tr>
         </table>
+            </tr>
     </form>
 </body>
 </html>

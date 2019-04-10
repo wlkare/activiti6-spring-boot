@@ -6,6 +6,7 @@
 
 </head>
 <body>
+
 <h2>
     <fieldset id="deployFieldset">
         <legend>部署流程资源</legend>
@@ -43,6 +44,7 @@
                 <td><a target="_blank" href="/read-resource?pdid=${pd.id }&resourceName=${pd.diagramResourceName }">${pd.diagramResourceName }</a></td>
                 <td>
                     <a target="_blank" href="/delete-deployment?deploymentId=${pd.deploymentId}">删除</a>
+                    <a class="btn" href="/getform/start/${pd.id }">启动</a>
                 </td>
             </tr>
             </#list>
