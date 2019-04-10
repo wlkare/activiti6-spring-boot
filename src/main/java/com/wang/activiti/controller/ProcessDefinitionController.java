@@ -47,7 +47,11 @@ public class ProcessDefinitionController {
             Object renderedStartForm = formService.getRenderedStartForm(processDefinitionId);
             mav.addObject("startFormData", renderedStartForm);
             mav.addObject("processDefinition", processDefinition);
-        }else { //动态表单
+        }else { //动态表单字段
+            /**
+             * 通过getStartFormData()方法即可读取启动流程时需要填写的表单数据（设计流程定义时的字段集合）
+             * 得到一个StartFormData对象，还可以获取表单字段对象集合
+             */
             StartFormData startFormData = formService.getStartFormData(processDefinitionId);
             mav.addObject("startFormData", startFormData);
         }
