@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -27,7 +28,7 @@ import java.util.Set;
 
 /**
  * @program: ProcessDefinitionController
- * @description: 流程定义相关功能：读取动态表单字段、读取外置表单内容 todo
+ * @description: 流程定义相关功能：读取动态表单字段、读取外置表单内容
  * @author: Mr.Wang
  * @create: 2019-04-10 10:06
  * @Version 1.0
@@ -85,7 +86,7 @@ public class ProcessDefinitionController {
         return mav;
     }
 
-    @RequestMapping(value = "process-instance/start/{processDefinitionId}")
+    @RequestMapping(value = "getform/start/process-instance/{processDefinitionId}")
     public String startProcessInstance(@PathVariable("processDefinitionId") String pdid,
                                        HttpServletRequest request,
                                        RedirectAttributes redirectAttributes){

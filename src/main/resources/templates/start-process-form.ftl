@@ -14,7 +14,7 @@
     </#if>
 </h3>
 <hr/>
-<form action="process-instance/start/${processDefinitionId}" class="form-horizontal" method="post">
+<form action="process-instance/${processDefinitionId}" class="form-horizontal" method="post">
     <#if (hasStartFormKey)>
         ${startFormData}
     </#if>
