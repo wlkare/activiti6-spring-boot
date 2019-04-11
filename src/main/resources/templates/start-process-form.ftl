@@ -6,7 +6,7 @@
 </head>
 <body>
 <h3>启动流程—
-    <#if hasStartFormKey>
+    <#if (hasStartFormKey)>
         [${processDefinition.name}]，版本号：${processDefinition.version}
     </#if>
     <#if (!hasStartFormKey)>
@@ -31,7 +31,7 @@
             <#--}-->
             <#--%>-->
             <div class="control-group">
-                <%-- 文本或者数字类型 --%>
+                <#--文本或者数字类型-->
                 <#if (fp.type.name == 'string' || fp.type.name == 'long')>
                     <label class="control-label" for="${fp.id}">${fp.name}:</label>
                     <div class="controls">
@@ -39,16 +39,16 @@
                     </div>
                 </#if>
 
-                <%-- 日期 --%>
+                <#-- 日期 -->
                 <#if (fp.type.name == 'date')>
                     <label class="control-label" for="${fp.id}">${fp.name}:</label>
                     <div class="controls">
-                        <input type="text" id="${fp.id}" name="${fp.id}" class="datepicker" data-type="${fp.type.name}"
-                               data-date-format="${fn:toLowerCase(datePattern)}"/>
+                        <input type="text" id="${fp.id}" name="${fp.id}" class="datepicker" data-type="${fp.type.name}"/>
+                               <#--data-date-format="${fn:toLowerCase(datePattern)}"/>-->
                     </div>
                 </#if>
 
-                <%-- Javascript --%>
+                <#--Javascript -->
                 <#if (fp.type.name == 'javascript')>
                     <script type="text/javascript">${fp.value};</script>
                 </#if>
@@ -56,10 +56,10 @@
         </#list>
     </#if>
 
-    <%-- 按钮区域 --%>
+    <#-- 按钮区域 -->
     <div class="control-group">
         <div class="controls">
-            <#--<a href="javascript:history.back();" class="btn"><i class="icon-backward"></i>返回列表</a>-->
+            <a href="javascript:history.back();" class="btn"><i class="icon-backward"></i>返回列表</a>
             <button type="submit" class="btn"><i class="icon-play"></i>启动流程</button>
         </div>
     </div>

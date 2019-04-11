@@ -22,6 +22,7 @@
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-th-large icon-black"></i>管理<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="/deployactiviti">流程定义</a></li>
+                            <li><a href="/index">流程设计器</a></li>
                         </ul>
                     </li>
                 </ul>
