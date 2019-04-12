@@ -22,13 +22,14 @@
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-th-large icon-black"></i>管理<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="/deployactiviti">流程定义</a></li>
+                            <li><a href="/index">流程设计器</a></li>
                         </ul>
                     </li>
                 </ul>
                 <ul class="nav pull-right">
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#" title="角色">
-                            <i class="icon-user icon-black" style="margin-right: .3em"></i><b class="caret"></b>
+                            <i class="icon-user icon-black" style="margin-right: .3em"></i>用户信息<b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a id="changePwd" href="#"><i class="icon-wrench icon-black"></i>修改密码</a></li>
