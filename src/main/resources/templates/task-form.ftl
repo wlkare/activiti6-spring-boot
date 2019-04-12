@@ -6,10 +6,10 @@
 </head>
 <body>
 <#if (pd.name)??>${pd.name}<#else> </#if>
-<h3>任务办理—[<#if hasFormKey??>${task.name}<#else> ${taskFormData.task.name}</#if>]，
-    流程定义ID：[<#if hasFormKey??>${task.processDefinitionId}<#else> ${taskFormData.task.processDefinitionId}</#if>]</h3>
+<h3>任务办理—[<#if hasFormKey>${task.name}<#else> ${taskFormData.task.name}</#if>]，
+    流程定义ID：[<#if hasFormKey>${task.processDefinitionId}<#else> ${taskFormData.task.processDefinitionId}</#if>]</h3>
 <hr/>
-<form action="task-complete/<#if hasFormKey??>${task.id}<#else> ${taskFormData.task.id}</#if>" class="form-horizontal" method="post">
+<form action="task-complete/<#if hasFormKey>${task.id}<#else> ${taskFormData.task.id}</#if>" class="form-horizontal" method="post">
     <#if hasFormKey>
         ${taskFormData}
     </#if>
@@ -29,7 +29,7 @@
             <#--%>-->
             <div class="control-group">
                 <#--<%-- 文本或者数字类型 --%>-->
-                <#if test="${fp.type.name == 'string' || fp.type.name == 'long'}">
+                <#if fp.type.name == 'string' || fp.type.name == 'long'>
                     <label class="control-label" for="${fp.id}">${fp.name}:</label>
                     <div class="controls">
                         <input type="text" id="${fp.id}" name="${fp.id}" data-type="${fp.type.name}" value="${fp.value}" ${readonly} ${required} />
@@ -37,7 +37,7 @@
                 </#if>
 
                 <#--<%-- 日期 --%>-->
-                <#if test="${fp.type.name == 'date'}">
+                <#if fp.type.name == 'date'>
                     <label class="control-label" for="${fp.id}">${fp.name}:</label>
                     <div class="controls">
                         <input type="text" id="${fp.id}" name="${fp.id}" class="datepicker" value="${fp.value}" data-type="${fp.type.name}"  ${readonly} ${required}/>
@@ -45,7 +45,7 @@
                 </#if>
 
                 <%-- 下拉框 --%>
-                <#if test="${fp.type.name == 'enum'}">
+                <#if fp.type.name == 'enum'>
                     <label class="control-label" for="${fp.id}">${fp.name}:</label>
                     <div class="controls">
                         <select name="${fp.id}" id="${fp.id}" ${disabled} ${required}>

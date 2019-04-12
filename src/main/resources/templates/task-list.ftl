@@ -33,13 +33,13 @@
             <td>${task.name }</td>
             <td>${task.processInstanceId }</td>
             <td>${task.processDefinitionId }</td>
-            <td>${task.createTime?string("dd.MM.yyyy HH:mm:ss")}</td>
-            <td><#if (task.assignee)??>${task.assignee}<#else> </#if></td>
+            <td>${task.createTime?string("yyyy.MM.dd HH:mm:ss")}</td>
+            <td>${(task.assignee)!}</td>
             <td>
-                <#if (task.assignee)??>
-                    <a class="btn" href="task-claim/${task.id}"><i class="icon-eye-open"></i>签收</a>
-                <#else>
+                <#if (task.assignee)??>  <#-- 为空则不执行“办理”-->
                     <a class="btn" href="task-getform/${task.id}"><i class="icon-user"></i>办理</a>
+                <#else>
+                    <a class="btn" href="task-claim/${task.id}"><i class="icon-eye-open"></i>签收</a>
                 </#if>
             </td>
         </tr>

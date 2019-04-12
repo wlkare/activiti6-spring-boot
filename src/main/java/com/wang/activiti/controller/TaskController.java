@@ -87,6 +87,7 @@ public class TaskController {
             mav.addObject("hasFormKey", true);
         }else {
             mav.addObject("taskFormData",taskFormData);
+            mav.addObject("hasFormKey", false);
         }
 
         return mav;
@@ -118,7 +119,7 @@ public class TaskController {
                 formValues.put(formProperty.getId(), value);
             }
         }
-        formService.submitStartFormData(taskId, formValues);
+        formService.submitTaskFormData(taskId, formValues);
         return TASK_LIST;
     }
 
