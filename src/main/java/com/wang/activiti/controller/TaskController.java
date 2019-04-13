@@ -9,6 +9,8 @@ import org.activiti.engine.form.TaskFormData;
 import org.activiti.engine.identity.User;
 import org.activiti.engine.task.Task;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,6 +43,8 @@ public class TaskController {
     private FormService formService;
 
     private static String TASK_LIST = "redirect:/task-list";
+
+    private static final Logger logger = LoggerFactory.getLogger(TaskController.class);
     /**
      * 读取启动流程的表单字段
      */
@@ -78,18 +82,21 @@ public class TaskController {
     public ModelAndView readTaskForm(@PathVariable("taskId") String taskId) throws Exception{
         ModelAndView mav = new ModelAndView("task-form");
         TaskFormData taskFormData = formService.getTaskFormData(taskId);
-        TaskService taskService = processEngine.getTaskService();
+
         if (taskFormData.getFormKey() != null){
             Object renderedTaskForm = formService.getRenderedTaskForm(taskId);
+            TaskService taskService = processEngine.getTaskService();
+
             Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
             mav.addObject("task", task);
             mav.addObject("taskFormData", renderedTaskForm);
             mav.addObject("hasFormKey", true);
+            logger.info("taskFormData:{}",renderedTaskForm);
         }else {
             mav.addObject("taskFormData",taskFormData);
             mav.addObject("hasFormKey", false);
+            logger.info("taskFormData:{}",taskFormData);
         }
-
         return mav;
     }
 

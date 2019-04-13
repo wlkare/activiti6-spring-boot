@@ -76,7 +76,9 @@ public class ProcessDefinitionController {
              */
             StartFormData startFormData = formService.getStartFormData(processDefinitionId);
             mav.addObject("startFormData", startFormData);
+            logger.info("startFormData:{}", startFormData);
         }
+
 
         mav.addObject("hasStartFormKey", hasStartFormKey);
         mav.addObject("processDefinitionId", processDefinitionId);

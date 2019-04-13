@@ -6,15 +6,15 @@
 </head>
 <body>
 <#if (pd.name)??>${pd.name}<#else> </#if>
-<h3>任务办理—[<#if hasFormKey>${task.name}<#else> ${taskFormData.task.name}</#if>]，
-    流程定义ID：[<#if hasFormKey>${task.processDefinitionId}<#else> ${taskFormData.task.processDefinitionId}</#if>]</h3>
+<h3>任务办理—[<#if hasFormKey == true>${task.name}<#else> ${taskFormData.task.name}</#if>]，
+    流程定义ID：[<#if hasFormKey == true>${task.processDefinitionId}<#else> ${taskFormData.task.processDefinitionId}</#if>]</h3>
 <hr/>
-<form action="task-complete/<#if hasFormKey>${task.id}<#else> ${taskFormData.task.id}</#if>" class="form-horizontal" method="post">
-    <#if hasFormKey>
+<form action="task-complete/<#if hasFormKey == true>${task.id}<#else> ${taskFormData.task.id}</#if>" class="form-horizontal" method="post">
+    <#if hasFormKey == true>   <#--"??" 判断hasFormKey是否为null，如果不为null则执行${taskFormData}-->
         ${taskFormData}
     </#if>
-    <#if !hasFormKey>
-        <#list (taskFormData.formProperties) as fp>
+    <#if hasFormKey == false>
+        <#list taskFormData.formProperties as fp>
             <#--<#set var="fpo" value="${fp}"/>-->
             <#--<#set var="disabled" value="${fp.writable ? '' : 'disabled'}" />-->
             <#--<#set var="readonly" value="${fp.writable ? '' : 'readonly'}" />-->
