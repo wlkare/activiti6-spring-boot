@@ -11,10 +11,10 @@
 <hr/>
 <form action="task-complete/<#if hasFormKey == true>${task.id}<#else> ${taskFormData.task.id}</#if>" class="form-horizontal" method="post">
     <#if hasFormKey == true>   <#--"??" 判断hasFormKey是否为null，如果不为null则执行${taskFormData}-->
-        ${taskFormData}
+        ${taskFormData}        <#-- 此处为外置表单，外置表单为html形式，故直接显示即可-->
     </#if>
     <#if hasFormKey == false>
-        <#list taskFormData.formProperties as fp>
+        <#list taskFormData.formProperties as fp>    <#--动态表单，需将taskFormData转化成html元素 -->
             <#--<#set var="fpo" value="${fp}"/>-->
             <#--<#set var="disabled" value="${fp.writable ? '' : 'disabled'}" />-->
             <#--<#set var="readonly" value="${fp.writable ? '' : 'readonly'}" />-->
